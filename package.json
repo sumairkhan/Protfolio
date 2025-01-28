@@ -1,0 +1,32 @@
+{
+  "name": "personal-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
+  },
+  "dependencies": {
+    "framer-motion": "^12.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
+    "react-router-dom": "^6.28.2",
+    "react-type-animation": "^3.2.0",
+    "swiper": "^11.2.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "netlify-cli": "^15.0.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.5"
+  }
+}
