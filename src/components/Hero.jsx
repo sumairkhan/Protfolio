@@ -1,11 +1,18 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaGithub, FaLinkedin, FaEnvelope, FaTimes, FaArrowLeft } from 'react-icons/fa';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { TypeAnimation } from 'react-type-animation';
-import { Link } from 'react-router-dom';
-import profileImg from '../assets/profile.jpg';
+import { Link, useNavigate } from 'react-router-dom';
+import profileImg from '/profile.jpg';
 
 const Hero = () => {
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
+  const navigate = useNavigate();
+
+  const toggleImageZoom = () => {
+    setIsImageZoomed(!isImageZoomed);
+  };
+
   const scrollToProjects = () => {
     const projectsSection = document.querySelector('[name="projects"]');
     if (projectsSection) {
@@ -13,18 +20,17 @@ const Hero = () => {
     }
   };
 
+  const goToProjects = () => {
+    navigate('/projects');
+  };
+
   return (
     <div name="home" className="h-screen w-full bg-gradient-to-b from-black via-black to-gray-800 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-500 rounded-full mix-blend-screen animate-blob"></div>
-        <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-blue-500 rounded-full mix-blend-screen animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-40 h-40 bg-purple-500 rounded-full mix-blend-screen animate-blob animation-delay-4000"></div>
-      </div>
+      {/* Header */}
 
-      <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row relative z-10">
-        <div className="flex flex-col justify-center h-full max-w-lg">
-          {/* Animated Greeting */}
+      <div className="max-w-screen-2xl mx-auto px-4 flex items-center justify-between h-full pt-16">
+        {/* Text Content */}
+        <div className="w-2/3 pr-12">
           <div className="flex items-center mb-4">
             <span className="text-2xl sm:text-3xl mr-4 text-gray-300">👋</span>
             <h2 className="text-2xl sm:text-3xl font-light text-gray-300">
@@ -32,13 +38,11 @@ const Hero = () => {
             </h2>
           </div>
 
-          {/* Name with Dynamic Typing Effect */}
-          <h1 className="text-4xl sm:text-6xl font-bold text-white mb-2">
+          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">
             Muhammad Sumair Khan
           </h1>
 
-          {/* Dynamic Role Typing */}
-          <div className="text-2xl sm:text-4xl font-bold text-cyan-400 mb-4">
+          <div className="text-3xl sm:text-4xl font-bold text-cyan-400 mb-6">
             <TypeAnimation
               sequence={[
                 'Senior Full Stack Software Engineer',
@@ -56,75 +60,68 @@ const Hero = () => {
             />
           </div>
 
-          {/* Enhanced Professional Summary */}
-          <p className="text-gray-400 py-4 max-w-xl text-lg leading-relaxed">
-            🚀 Transforming complex challenges into elegant digital solutions, I'm a passionate Senior Full Stack Software Engineer 
-            with a knack for crafting robust web applications that push technological boundaries. My expertise spans the entire 
-            software development lifecycle, from conceptualization to deployment, with a laser focus on .NET technologies, 
-            cloud-native architectures, and cutting-edge frontend frameworks.
+          <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            🚀 Transforming complex challenges into elegant digital solutions. 
+            Passionate about crafting robust web applications that push technological boundaries.
           </p>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-cyan-400 font-bold">🏆</span>
-            <span className="text-gray-300 text-md">
-              Proven track record of leading high-performance teams and delivering scalable solutions across education, 
-              healthcare, and enterprise domains.
-            </span>
-          </div>
 
-          {/* Action and Social Links */}
-          <div className="flex items-center gap-6 mt-6">
+          <div className="flex space-x-6 items-center">
             <button
               onClick={scrollToProjects}
-              className="group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer hover:scale-105 transition-transform"
+              className="bg-cyan-500 text-white px-6 py-3 rounded-lg hover:bg-cyan-600 transition-colors flex items-center"
             >
               View Portfolio
-              <span className="group-hover:rotate-90 duration-300 ml-2">
-                <HiArrowNarrowRight size={25} />
-              </span>
+              <HiArrowNarrowRight className="ml-2" />
             </button>
-            
-            <div className="flex gap-4">
-              <a 
-                href="https://www.linkedin.com/in/muhammad-sumair-khan" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110"
-                title="LinkedIn Profile"
-              >
+
+            <div className="flex space-x-4">
+              <a href="https://linkedin.com/in/muhammad-sumair-khan" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                 <FaLinkedin size={30} />
               </a>
-              <a 
-                href="https://github.com/sumairkhan" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110"
-                title="GitHub Profile"
-              >
+              <a href="https://github.com/sumairkhan" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                 <FaGithub size={30} />
-              </a>
-              <a 
-                href="mailto:sumairk801@gmail.com"
-                className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110"
-                title="Send Email"
-              >
-                <FaEnvelope size={30} />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative">
-            <img
-              src={profileImg}
-              alt="My Profile"
-              className="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover mx-auto border-2 border-cyan-500"
+        {/* Profile Image */}
+        <div className="w-1/3 flex justify-center">
+          <div 
+            className="relative cursor-pointer group"
+            onClick={toggleImageZoom}
+          >
+            <div className="absolute -inset-2 bg-cyan-500 rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-all duration-300"></div>
+            <img 
+              src={profileImg} 
+              alt="Profile" 
+              className="relative z-10 rounded-full w-80 h-80 object-cover border-4 border-cyan-500 group-hover:scale-105 transition-transform duration-300"
             />
           </div>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition duration-300"></div>
         </div>
       </div>
+
+      {/* Zoom Modal */}
+      {isImageZoomed && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-8"
+          onClick={toggleImageZoom}
+        >
+          <div className="relative max-w-4xl max-h-screen">
+            <button 
+              onClick={toggleImageZoom}
+              className="absolute -top-10 right-0 text-white text-4xl hover:text-cyan-500"
+            >
+              <FaTimes />
+            </button>
+            <img 
+              src={profileImg} 
+              alt="Zoomed Profile" 
+              className="max-w-full max-h-screen object-contain rounded-lg shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
