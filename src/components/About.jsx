@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   const skills = [
-    { category: 'Languages', items: ['JavaScript', 'TypeScript', 'C#', 'Python', 'SQL'] },
+    { category: 'Languages', items: ['JavaScript', 'TypeScript', 'C#', 'Python', 'SQL', 'VB.NET'] },
     { category: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'Material UI', 'Redux'] },
     { category: 'Backend', items: ['Node.js', 'ASP.NET Core', 'Express.js', 'GraphQL'] },
     { category: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis'] },

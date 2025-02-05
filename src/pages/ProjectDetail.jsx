@@ -249,14 +249,182 @@ Performance Optimization:
       }
     ]
   },
+  'scholarship-financial-aid': {
+    title: 'Scholarship & Financial Aid Management System',
+    description: 'Enterprise-grade scholarship and financial aid management system built with ASP.NET MVC 5.',
+    fullDescription: `
+The Scholarship & Financial Aid Management System is a robust enterprise application developed using ASP.NET MVC 5 architecture. This system streamlines the entire scholarship and financial aid process, from application submission to final disbursement.
+
+Key Features:
+- Comprehensive Application Management
+  • Online application submission with document upload
+  • Real-time application status tracking
+  • Automated email notifications
+  • Dynamic form generation based on scholarship type
+
+- Administrative Dashboard
+  • Role-based access control (Admin, Reviewer, Student)
+  • Application review workflow
+  • Batch processing capabilities
+  • Advanced reporting and analytics
+
+Technical Implementation:
+- Backend Architecture:
+  • ASP.NET MVC 5 with C# for robust application structure
+  • Entity Framework for data access and ORM
+  • LINQ for efficient data querying
+  • SQL Server for reliable data storage
+
+- Frontend Development:
+  • jQuery for dynamic client-side interactions
+  • Bootstrap for responsive design
+  • AJAX for seamless data updates
+  • JavaScript for form validation
+
+- DevOps & Deployment:
+  • Azure DevOps for CI/CD pipeline
+  • Automated testing and deployment
+  • Performance monitoring and logging
+  • Database versioning and migrations
+
+The system features a sophisticated database design with multiple interconnected entities including Students, Scholarships, Applications, and Financial Records, all managed through Entity Framework Code First approach.
+    `,
+    technologies: ['ASP.NET MVC 5', 'jQuery', 'Bootstrap', 'SQL Server', 'Entity Framework', 'Azure DevOps', 'LINQ', 'C#'],
+    images: [
+      '/scholarship/Screen-1.png',
+      '/scholarship/Section-1.png',
+      '/scholarship/Section-A.png',
+      '/scholarship/Section-B.png',
+      '/scholarship/Section-C.png',
+      '/scholarship/Section-D.png',
+      '/scholarship/Section-E.png',
+      '/scholarship/Section-F.png',
+      '/scholarship/Section-G.png',
+      '/scholarship/Section-H.png'
+    ],
+    liveLink: '/scholarships',
+    githubLink: '#'
+  },
+  'dexa-xplore': {
+    title: 'DexaXplore - IoT-based ERP System',
+    description: 'A customized IoT-based ERP system tailored for electrical manufacturing, integrating real-time data and operational efficiency.',
+    fullDescription: `DexaXplore is a comprehensive IoT-based Enterprise Resource Planning (ERP) system designed specifically for electrical manufacturing processes.
+
+Core Modules and Functionalities:
+1. Integrated Sales Order Registration
+- Electronic order capture with automatic system updates
+- Streamlined quoting and proposal generation
+- Seamless POS system integration
+
+2. Sample Request Management
+- Electronic tracking of customer specifications
+- Cost association and detailed reporting
+- Progress monitoring
+
+3. Engineering Planning
+- Master Bill of Materials (MBOM) management
+- Automated Bills of Quantities (BOQs) generation
+- Multi-level BOM structure support
+
+4. Job Sheet Creation and Management
+- Automatic job sheet generation
+- Real-time task and material tracking
+- Personnel and work center assignment
+
+5. Label Printing and Factory Certification
+- Customized label printing
+- Electronic quality control processes
+- Regulatory compliance management
+
+6. Purchase Planning and Management
+- Automatic purchase requisitions
+- Supplier performance tracking
+- Digital approval workflows
+
+7. Production Shop Floor Management
+- IoT sensor integration
+- Real-time machine performance monitoring
+- Work-in-progress (WIP) tracking
+
+8. Warehouse Management
+- Real-time inventory tracking
+- Automated replenishment
+- RFID and barcode integration
+
+9. Dynamic Excel Import
+- Flexible data entry and manipulation
+- Seamless data migration capabilities
+
+Key Benefits:
+- Enhanced operational efficiency
+- Real-time data integration
+- Improved production planning
+- Optimized resource utilization
+- Comprehensive traceability`,
+    technologies: [
+      'ASP.NET Core',
+      'SQL Server',
+      'MQTT Protocol',
+      'RDLC Reporting',
+      'IoT Integration',
+      'Real-time Monitoring',
+      'RFID Technology',
+      'Excel Integration'
+    ],
+    images: [
+      '/dexa-xplore/dashboard.webp'
+    ],
+    externalLink: 'https://www.iotsands.com/dexaXplore',
+    githubLink: '#',
+    challenges: [
+      'Integrating IoT sensors across multiple manufacturing processes',
+      'Ensuring real-time data synchronization',
+      'Creating a flexible and scalable ERP solution'
+    ],
+    outcomes: [
+      'Developed a comprehensive IoT-based ERP system',
+      'Improved manufacturing operational efficiency',
+      'Enhanced real-time monitoring and decision-making'
+    ]
+  },
+  'davis-erp': {
+    title: 'Davis ERP',
+    description: 'ERP system with advanced inventory and production control features.',
+    fullDescription: `Davis ERP is a comprehensive Enterprise Resource Planning system designed to enhance inventory management and production control for manufacturing businesses.
+
+Key Features:
+- Advanced inventory tracking and management
+- Production control and optimization
+- MQTT protocol integration for machine communication
+- Robust reporting capabilities using RDLC
+
+The system provides businesses with:
+- Improved operational efficiency
+- Real-time production monitoring
+- Streamlined inventory processes
+- Detailed performance reporting`,
+    technologies: ['ASP.NET MVC 5', 'SQL Server', 'RDLC Reports', 'MQTT Protocol'],
+    images: [
+      '/path/to/davis-erp-image.jpg'
+    ],
+    liveLink: 'https://www.davis.com.my/',
+    githubLink: '#',
+    challenges: [
+      'Integrating MQTT protocol for machine communication',
+      'Developing a flexible inventory management system',
+      'Creating comprehensive production tracking features'
+    ],
+    outcomes: [
+      'Developed a robust ERP solution for manufacturing',
+      'Implemented real-time machine communication',
+      'Enhanced inventory and production tracking capabilities'
+    ]
+  },
   // Add more projects as needed
 };
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
   const project = projectsData[projectId];
 
   if (!project) {
@@ -276,28 +444,6 @@ const ProjectDetail = () => {
   const projectChallenges = project.challenges || [];
   const projectOutcomes = project.outcomes || [];
   const projectKeyFeatures = project.keyFeatures || [];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => 
-      prev === projectImages.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => 
-      prev === 0 ? projectImages.length - 1 : prev - 1
-    );
-  };
-
-  const openModal = (image) => {
-    setSelectedImage(image);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedImage('');
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-black to-gray-800 text-white py-8 px-4">
@@ -320,6 +466,28 @@ const ProjectDetail = () => {
       </div>
 
       <div className="max-w-6xl mx-auto pt-16">
+        {/* Large Header Image for Dexa Xplore */}
+        {projectId === 'dexa-xplore' && projectImages.length > 0 && (
+          <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
+            <img 
+              src={projectImages[0]}
+              alt={`${projectName} Project Overview`}
+              className="w-full h-[600px] object-cover object-center transform hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+        )}
+
+        {/* Header Image for Scholarship Project */}
+        {projectId === 'scholarship-financial-aid' && (
+          <div className="mb-8 rounded-lg overflow-hidden shadow-xl">
+            <img 
+              src="/scholarship/Index.png"
+              alt="Scholarship & Financial Aid Management System"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        )}
+
         {/* Project Header */}
         <div className="flex justify-between items-start mb-8">
           <div>
@@ -327,9 +495,9 @@ const ProjectDetail = () => {
             <p className="text-lg text-gray-300">{projectDescription}</p>
           </div>
           <div className="flex space-x-4">
-            {project.websiteUrl && (
+            {project.externalLink && (
               <a 
-                href={project.websiteUrl} 
+                href={project.externalLink} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg transition-colors text-sm"
@@ -350,14 +518,13 @@ const ProjectDetail = () => {
           </div>
         </div>
 
-        {/* Top Two Images */}
-        {projectImages.length > 0 && (
-          <div className="grid md:grid-cols-2 gap-4 mb-12">
-            {projectImages.slice(0, 2).map((image, index) => (
+        {/* All Screenshots for Scholarship & Financial Aid */}
+        {projectId === 'scholarship-financial-aid' && projectImages.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {projectImages.map((image, index) => (
               <div 
                 key={index} 
                 className="cursor-pointer hover:opacity-80 transition-opacity"
-                onClick={() => openModal(image)}
               >
                 <img 
                   src={image} 
@@ -369,70 +536,152 @@ const ProjectDetail = () => {
           </div>
         )}
 
+        {/* All Screenshots for Meta-Curricular */}
+        {projectId === 'meta-curricular' && projectImages.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {projectImages.map((image, index) => (
+              <div 
+                key={index} 
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <a 
+                  href={image} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <img 
+                    src={image} 
+                    alt={`${projectName} Project Screenshot ${index + 1}`}
+                    className="w-full rounded-lg shadow-lg object-cover h-64"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* All Screenshots for H-Prime 3 */}
+        {projectId === 'h-prime-3' && projectImages.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-12">
+            {projectImages.map((image, index) => (
+              <div 
+                key={index} 
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <a 
+                  href={image} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <img 
+                    src={image} 
+                    alt={`${projectName} Project Screenshot ${index + 1}`}
+                    className="w-full rounded-lg shadow-lg object-cover h-64"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* All Screenshots for H-Prime 2 */}
+        {projectId === 'h-prime-2' && projectImages.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {projectImages.map((image, index) => (
+              <div 
+                key={index} 
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <a 
+                  href={image} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <img 
+                    src={image} 
+                    alt={`${projectName} Project Screenshot ${index + 1}`}
+                    className="w-full rounded-lg shadow-lg object-cover h-64"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Top Two Images */}
+        {projectImages.length > 0 && projectId !== 'h-prime-3' && projectId !== 'h-prime-2' && projectId !== 'meta-curricular' && projectId !== 'scholarship-financial-aid' && projectId !== 'dexa-xplore' && (
+          <div className="grid md:grid-cols-2 gap-4 mb-12">
+            {projectImages.slice(0, 2).map((image, index) => (
+              <div 
+                key={index} 
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <a 
+                  href={image} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <img 
+                    src={image} 
+                    alt={`${projectName} Project Screenshot ${index + 1}`}
+                    className="w-full rounded-lg shadow-lg object-cover h-64"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Image Slider for Remaining Images */}
-        {projectImages.length > 2 && (
+        {projectImages.length > 2 && projectId !== 'h-prime-3' && projectId !== 'h-prime-2' && projectId !== 'meta-curricular' && projectId !== 'scholarship-financial-aid' && projectId !== 'dexa-xplore' && (
           <div className="relative mb-12 overflow-hidden">
             <div className="w-full flex justify-center items-center">
               <div className="w-full max-w-4xl relative">
                 <div 
                   className="flex transition-transform duration-300 ease-in-out"
                   style={{ 
-                    transform: `translateX(-${currentSlide * 100}%)`,
+                    transform: `translateX(-${0 * 100}%)`,
                     width: `${(projectImages.length - 2) * 100}%`
                   }}
                 >
-                  {projectImages.slice(2).map((image, index) => (
+                  {projectImages.slice(2, 5).map((image, index) => (
                     <div 
                       key={index} 
                       className="w-full flex-shrink-0 px-2 cursor-pointer"
                       style={{ width: '100%' }}
-                      onClick={() => openModal(image)}
                     >
-                      <img 
-                        src={image} 
-                        alt={`${projectName} Project Screenshot ${index + 3}`}
-                        className="w-full rounded-lg shadow-lg object-cover h-96 hover:opacity-80 transition-opacity"
-                      />
+                      <a 
+                        href={image} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block"
+                      >
+                        <img 
+                          src={image} 
+                          alt={`${projectName} Project Screenshot ${index + 3}`}
+                          className="w-full rounded-lg shadow-lg object-cover h-96 hover:opacity-80 transition-opacity"
+                        />
+                      </a>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
 
-            {/* Navigation Buttons */}
-            <button 
-              onClick={prevSlide}
-              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full m-2"
-            >
-              <FaChevronLeft />
-            </button>
-            <button 
-              onClick={nextSlide}
-              className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full m-2"
-            >
-              <FaChevronRight />
-            </button>
-          </div>
-        )}
-
-        {/* Image Modal */}
-        {isModalOpen && (
-          <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
-            onClick={closeModal}
-          >
-            <div className="relative max-w-[90%] max-h-[90%]">
+              {/* Navigation Buttons */}
               <button 
-                onClick={closeModal}
-                className="absolute -top-10 right-0 text-white text-2xl"
+                className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full m-2"
               >
-                <FaTimes />
+                <FaChevronLeft />
               </button>
-              <img 
-                src={selectedImage} 
-                alt="Full size project screenshot"
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
+              <button 
+                className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full m-2"
+              >
+                <FaChevronRight />
+              </button>
             </div>
           </div>
         )}

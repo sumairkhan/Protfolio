@@ -7,6 +7,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Courses from './pages/Courses';
+import ScholarshipFinancialAid from './pages/ScholarshipFinancialAid';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/scholarships" element={<ScholarshipFinancialAid />} />
       </Routes>
     </Router>
   );

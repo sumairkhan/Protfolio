@@ -42,20 +42,6 @@ const projectsData = [
     link: '/projects/dotdocx'
   },
   {
-    id: 'cda-portal',
-    title: 'CDA Portal',
-    description: 'Comprehensive management system with ticket tracking and inventory modules.',
-    technologies: ['.NET Core MVC', 'HTML', 'CSS', 'Bootstrap', 'jQuery', 'SQL Server', 'RDLC', 'IIS'],
-    features: [
-      'Ticket Management Module: Create, assign, and track support tickets with real-time updates',
-      'Inventory Module: Asset tracking and stock level management',
-      'Detailed Reporting: Comprehensive insights on ticket resolution and inventory status'
-    ],
-    image: '/path/to/cda-portal-image.jpg',
-    link: '/projects/cda-portal'
-  },
-
-  {
     id: 'meta-curricular',
     title: 'Meta-Curricular Activities Reporting System',
     description: 'Digital system to streamline student life department operations at Habib University.',
@@ -66,47 +52,23 @@ const projectsData = [
       'Provided comprehensive support and training',
       'Enhanced data-driven decision making'
     ],
-    image: '/path/to/meta-curricular-image.jpg',
+    image: '/MCT/admin-protal/dashboard.png',
     link: '/projects/meta-curricular'
   },
   {
-    id: 'e-application',
-    title: 'E-Application',
-    description: 'Web application supporting the university admission process.',
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'jQuery', 'ASP.NET MVC', 'Azure DevOps', 'Blob Storage', 'Azure Active Directory', 'Email Service', 'HABALL Payment Integration'],
-    features: [
-      'Collaborated with Admission department',
-      'Developed and maintained web application',
-      'Delivered high-quality, well-documented code'
-    ],
-    image: '/path/to/e-application-image.jpg',
-    link: '/projects/e-application'
-  },
-  {
     id: 'scholarship-financial-aid',
-    title: 'Scholarship & Financial Aid',
-    description: 'Digital system for student finance department\'s scholarship and financial aid processes.',
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'ASP.NET 5', 'MVVM', 'Knockout.js', 'Azure DevOps', 'Blob Storage', 'Azure Active Directory', 'Email Service'],
+    title: 'Scholarship & Financial Aid Management System',
+    description: 'Enterprise-grade scholarship and financial aid management system built with ASP.NET MVC 5.',
+    technologies: ['ASP.NET MVC 5', 'jQuery', 'Bootstrap', 'SQL Server', 'Entity Framework', 'Azure DevOps', 'LINQ', 'C#'],
     features: [
-      'Developed system to digitize scholarship processes',
-      'Worked on entire software lifecycle',
-      'Ensured user-friendly experience'
+      'Comprehensive scholarship application and management',
+      'Real-time application tracking and status updates',
+      'Advanced database design with Entity Framework',
+      'Secure user authentication and role-based access',
+      'Automated workflow for application processing'
     ],
-    image: '/path/to/scholarship-image.jpg',
+    image: '/scholarship/Index.png',
     link: '/projects/scholarship-financial-aid'
-  },
-  {
-    id: 'alumni-management',
-    title: 'Alumni Management Portal',
-    description: 'Digitalized process management for student alumni department.',
-    technologies: ['ASP.NET 5', 'Azure DevOps', 'Blob Storage', 'Azure Active Directory', 'Email Service', 'Etisalat API Payment Integration'],
-    features: [
-      'Developed Alumni Management System (AMS)',
-      'Analyzed business requirements',
-      'Delivered web application lifecycle from concept to support'
-    ],
-    image: '/path/to/alumni-management-image.jpg',
-    link: '/projects/alumni-management'
   },
   {
     id: 'tasblock',
@@ -122,28 +84,24 @@ const projectsData = [
     link: '/projects/tasblock'
   },
   {
-    id: 'davis-erp',
-    title: 'Davis ERP',
-    description: 'ERP system with advanced inventory and production control features.',
-    technologies: ['ASP.NET MVC 5', 'SQL Server', 'RDLC Reports', 'MQTT Protocol'],
+    id: 'dexa-xplore',
+    title: 'DexaXplore - IoT-based ERP System',
+    description: 'A customized IoT-based ERP system tailored for electrical manufacturing, integrating real-time data and operational efficiency.',
+    technologies: ['IoT Integration', 'ERP', 'Real-time Monitoring', 'RFID', 'Sensor Integration', 'Warehouse Management', 'Production Management'],
     features: [
-      'Developed ERP functionalities for inventory and sales',
-      'Integrated MQTT protocol for machine production control',
-      'Deployed in secure internal data center'
+      'Comprehensive sales order registration with automatic system updates',
+      'Advanced engineering planning with Master Bill of Materials (MBOM)',
+      'Real-time production monitoring using IoT sensors',
+      'Automated warehouse management with RFID integration',
+      'Electronic sample request tracking and management',
+      'Dynamic job sheet creation and work center assignment',
+      'Customized label printing and factory certification',
+      'Integrated purchase planning with supplier performance tracking',
+      'Flexible Excel import for seamless data migration'
     ],
-    image: '/path/to/davis-erp-image.jpg',
-    link: '/projects/davis-erp'
+    image: '/dexa-xplore/dashboard.webp',
+    link: '/projects/dexa-xplore'
   },
-  {
-    id: 'meta-curricular',
-    title: 'Meta-Curricular Activities Reporting System (MCT)',
-    description: 'Comprehensive platform for tracking student extracurricular achievements',
-    technologies: ['.NET Core', 'Angular', 'Azure', 'Azure Blob Storage', 'Azure Key Vault'],
-    image: '/MCT/admin-protal/dashboard.png',
-    category: 'Web Development',
-    tags: ['Education', 'Enterprise', 'Management System'],
-    link: '/projects/meta-curricular'
-  }
 ];
 
 const Projects = () => {
@@ -191,12 +149,14 @@ const Projects = () => {
                     </ul>
                   </div>
                 )}
-                <Link 
-                  to={project.link} 
-                  className="inline-block bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 transition-colors"
-                >
-                  View Project
-                </Link>
+                {project.link && (
+                  <Link 
+                    to={project.link} 
+                    className="inline-block bg-cyan-500 text-white px-4 py-2 rounded-md hover:bg-cyan-600 transition-colors"
+                  >
+                    View Project
+                  </Link>
+                )}
               </div>
             </div>
           ))}
